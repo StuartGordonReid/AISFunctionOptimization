@@ -26,7 +26,7 @@ public class Simulator {
 
     public void run() {
         //samples, iterations, resolution, population
-        Configuration config = new Configuration(55, 2000, 20, 50);
+        Configuration config = new Configuration(1, 2000, 20, 50);
 
         PSO_Algorithm pso = new PSO_Algorithm(config);
         AIS_Algorithm ais = new AIS_Algorithm(config);

@@ -34,7 +34,8 @@ public class PSO_Algorithm extends Algorithm {
     }
 
     public PSO_Particle iteration() {
-
+        int gbestIndex = getGlobalBestIndex();
+        
         return null;
     }
 
@@ -49,13 +50,9 @@ public class PSO_Algorithm extends Algorithm {
         return gbest;
     }
 
-    public void updatePersonalBest() {
-        
-    }
-
     @Override
     public Data optimize() {
-        Data results = null;
+        results = null;
         for (int i = 0; i < c.getSample(); i++) {
             for (int j = 0; j < c.getIterations(); j++) {
                 PSO_Particle gbest = iteration();
