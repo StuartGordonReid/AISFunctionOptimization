@@ -35,19 +35,34 @@ public class PSO_Algorithm extends Algorithm {
 
     public PSO_Particle iteration() {
         int gbestIndex = getGlobalBestIndex();
-        
-        return null;
+        for (int i = 0; i < population.length; i++) {
+            if (i != gbestIndex) {
+                population[i].moveParticle(population[gbestIndex].getSolution());
+            }
+        }
+        return population[getGlobalBestIndex()];
     }
 
     public int getGlobalBestIndex() {
         int gbest = 0;
         double gbestScore = Double.MAX_VALUE;
         for (int i = 0; i < population.length; i++) {
-            if (problem.getFitness(population[i].getSolution()) < gbestScore) {
+            double score = problem.getFitness(population[i].getSolution());
+            if (score < gbestScore && satisfiesConstraints(population[i].solution)) {
                 gbest = i;
+                gbestScore = score;
             }
         }
         return gbest;
+    }
+
+    public boolean satisfiesConstraints(double[] solution) {
+        for (int i = 0; i < solution.length; i++) {
+            if (solution[i] > problem.getUpperBound() || solution[i] < problem.getLowerBound()) {
+                return false;
+            }
+        }
+        return true;
     }
 
     @Override
@@ -56,7 +71,9 @@ public class PSO_Algorithm extends Algorithm {
         for (int i = 0; i < c.getSample(); i++) {
             for (int j = 0; j < c.getIterations(); j++) {
                 PSO_Particle gbest = iteration();
-                System.out.println(problem.getFitness(gbest.getSolution()));
+                if (j % c.getResolution() == 0) {
+                    System.out.println(problem.getFitness(gbest.getSolution()));
+                }
             }
         }
         return results;

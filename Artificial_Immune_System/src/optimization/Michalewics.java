@@ -38,7 +38,7 @@ public class Michalewics extends OptimizationProblem {
             double v = i * solution[i];
             s = s + Math.sin(solution[i]) * Math.pow((Math.sin((v * v) / Math.PI)), 2 * m);
         }
-        double fitness = 0.0;
+        double fitness = -s;
         return fitness;
     }
 

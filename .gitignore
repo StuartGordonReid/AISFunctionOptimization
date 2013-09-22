@@ -4,3 +4,4 @@
 *.jar
 *.war
 *.ear
+/Artificial_Immune_System/build/

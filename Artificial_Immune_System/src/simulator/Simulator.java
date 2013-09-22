@@ -21,7 +21,7 @@ import pso.PSO_Algorithm;
  */
 public class Simulator {
 
-    Simulator() {
+    public Simulator() {
     }
 
     public void run() {
@@ -49,17 +49,17 @@ public class Simulator {
             System.out.println(simulationLabel);
             pso.initialize(problems.get(i));
             Data results = pso.optimize();
-            results.writeToFile(simulationLabel);
+            //results.writeToFile(simulationLabel);
             System.out.println("==============================================");
         }
-
-        for (int i = 0; i < problems.size(); i++) {
-            String simulationLabel = "AIS Solving " + problems.get(i).getLabel();
-            System.out.println(simulationLabel);
-            ais.initialize(problems.get(i));
-            Data results = ais.optimize();
-            results.writeToFile(simulationLabel);
-            System.out.println("==============================================");
-        }
+        /*
+         for (int i = 0; i < problems.size(); i++) {
+         String simulationLabel = "AIS Solving " + problems.get(i).getLabel();
+         System.out.println(simulationLabel);
+         ais.initialize(problems.get(i));
+         Data results = ais.optimize();
+         results.writeToFile(simulationLabel);
+         System.out.println("==============================================");
+         }*/
     }
 }

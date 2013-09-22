@@ -39,12 +39,13 @@ public class Ackleys extends OptimizationProblem {
         double s1 = 0.0;
         double s2 = 0.0;
 
-        for (int i = 0; i < a; i++) {
+        for (int i = 0; i < n; i++) {
             s1 = s1 + (solution[i] * solution[i]);
             s2 = s2 + Math.cos(c * solution[i]);
         }
 
-        double fitness = -a * Math.exp(-b * Math.sqrt((1 / n) * s1)) - Math.exp((1 / n) * s2) + a + Math.exp(1.0);
+        double fitness = -a * Math.exp(-b * Math.sqrt(1 / (n * s1))) - Math.exp(1 / (n * s2)) + a + Math.exp(1.0);
+        //System.out.println(fitness + "," + s1 + "," + s2);
         return fitness;
     }
 }
