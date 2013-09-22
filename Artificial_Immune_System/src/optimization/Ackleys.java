@@ -29,8 +29,8 @@ public class Ackleys extends OptimizationProblem {
 
     public Ackleys(int d, String l) {
         super(d, l);
-        upperBound = 30.0;
-        lowerBound = -15.0;
+        upperBound = 32.768;
+        lowerBound = -32.768;
     }
 
     @Override
@@ -44,7 +44,7 @@ public class Ackleys extends OptimizationProblem {
             s2 = s2 + Math.cos(c * solution[i]);
         }
 
-        double fitness = -a * Math.exp(-b * Math.sqrt(1 / (n * s1))) - Math.exp(1 / (n * s2)) + a + Math.exp(1.0);
+        double fitness = -a * Math.exp(-b * Math.sqrt((1 / n) * s1)) - Math.exp((1 / n) * s2) + a + Math.E;
         //System.out.println(fitness + "," + s1 + "," + s2);
         return fitness;
     }

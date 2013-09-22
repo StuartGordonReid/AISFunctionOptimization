@@ -67,14 +67,16 @@ public class PSO_Algorithm extends Algorithm {
 
     @Override
     public Data optimize() {
-        results = null;
+        results = new Data(c);
         for (int i = 0; i < c.getSample(); i++) {
             for (int j = 0; j < c.getIterations(); j++) {
                 PSO_Particle gbest = iteration();
                 if (j % c.getResolution() == 0) {
-                    System.out.println(problem.getFitness(gbest.getSolution()));
+                    //System.out.println(problem.getFitness(gbest.getSolution()));
+                    results.addDatum(problem.getFitness(gbest.getSolution()));
                 }
             }
+            results.completeSample();
         }
         return results;
     }

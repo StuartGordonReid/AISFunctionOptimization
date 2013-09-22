@@ -56,8 +56,8 @@ public class PSO_Particle {
     }
 
     public boolean restart(double[] sol, double[] gbest) {
-        double mx = 0.5001;
-        double mn = 0.4999;
+        double mx = 0.501;
+        double mn = 0.499;
         double similarity = 0.0;
 
         for (int i = 0; i < sol.length; i++) {
